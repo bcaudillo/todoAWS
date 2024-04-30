@@ -1,0 +1,114 @@
+{
+  "providers": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-todo-dev-9df20-authRole",
+      "UnauthRoleArn": "arn:aws:iam::211125301307:role/amplify-todo-dev-9df20-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::211125301307:role/amplify-todo-dev-9df20-authRole",
+      "Region": "us-east-2",
+      "DeploymentBucketName": "amplify-todo-dev-9df20-deployment",
+      "UnauthRoleName": "amplify-todo-dev-9df20-unauthRole",
+      "StackName": "amplify-todo-dev-9df20",
+      "StackId": "arn:aws:cloudformation:us-east-2:211125301307:stack/amplify-todo-dev-9df20/7f4fbe10-f5cc-11ee-827f-06bbdb3f6845",
+      "AmplifyAppId": "dtt76yaq4jbg7"
+    }
+  },
+  "hosting": {
+    "S3AndCloudFront": {
+      "service": "S3AndCloudFront",
+      "providerPlugin": "awscloudformation",
+      "providerMetadata": {
+        "s3TemplateURL": "https://s3.amazonaws.com/amplify-todo-dev-9df20-deployment/amplify-cfn-templates/hosting/template.json",
+        "logicalId": "hostingS3AndCloudFront"
+      },
+      "lastPushTimeStamp": "2024-04-15T16:38:45.984Z",
+      "output": {
+        "CloudFrontSecureURL": "https://d32omk1cq97sf7.cloudfront.net",
+        "S3BucketSecureURL": "https://todo-20240408112338-hostingbucket-dev.s3.amazonaws.com",
+        "CloudFrontOriginAccessIdentity": "E2GYODDDP9HOEE",
+        "WebsiteURL": "http://todo-20240408112338-hostingbucket-dev.s3-website.us-east-2.amazonaws.com",
+        "CloudFrontDistributionID": "E1EN47GHRWSFIY",
+        "Region": "us-east-2",
+        "HostingBucketName": "todo-20240408112338-hostingbucket-dev",
+        "CloudFrontDomainName": "d32omk1cq97sf7.cloudfront.net"
+      },
+      "lastPushDirHash": "wPsyvQaQlMUbjZVajm76qHsAlNA="
+    }
+  },
+  "auth": {
+    "todo0a4a0517": {
+      "service": "Cognito",
+      "providerPlugin": "awscloudformation",
+      "dependsOn": [],
+      "customAuth": false,
+      "frontendAuthConfig": {
+        "socialProviders": [],
+        "usernameAttributes": [
+          "EMAIL"
+        ],
+        "signupAttributes": [
+          "EMAIL"
+        ],
+        "passwordProtectionSettings": {
+          "passwordPolicyMinLength": 8,
+          "passwordPolicyCharacters": []
+        },
+        "mfaConfiguration": "OFF",
+        "mfaTypes": [
+          "SMS"
+        ],
+        "verificationMechanisms": [
+          "EMAIL"
+        ]
+      },
+      "providerMetadata": {
+        "s3TemplateURL": "https://s3.amazonaws.com/amplify-todo-dev-9df20-deployment/amplify-cfn-templates/auth/todo0a4a0517-cloudformation-template.json",
+        "logicalId": "authtodo0a4a0517"
+      },
+      "lastPushTimeStamp": "2024-04-15T16:38:45.987Z",
+      "output": {
+        "UserPoolId": "us-east-2_c8MDvdRtA",
+        "AppClientIDWeb": "5k943gn9rkohiqkehlkunukbsn",
+        "AppClientID": "48upr1knkue1m5hfgd3jjknegd",
+        "IdentityPoolId": "us-east-2:9c3155d1-b8bb-410a-b6bb-b0d8539c537c",
+        "UserPoolArn": "arn:aws:cognito-idp:us-east-2:211125301307:userpool/us-east-2_c8MDvdRtA",
+        "IdentityPoolName": "todo0a4a0517_identitypool_0a4a0517__dev",
+        "UserPoolName": "todo0a4a0517_userpool_0a4a0517"
+      },
+      "lastPushDirHash": "hOF/rl+35wXjAo3ZzlKGqN5imIQ="
+    }
+  },
+  "api": {
+    "todo": {
+      "service": "AppSync",
+      "providerPlugin": "awscloudformation",
+      "dependsOn": [
+        {
+          "category": "auth",
+          "resourceName": "todo0a4a0517",
+          "attributes": [
+            "UserPoolId"
+          ]
+        }
+      ],
+      "output": {
+        "authConfig": {
+          "defaultAuthentication": {
+            "authenticationType": "AMAZON_COGNITO_USER_POOLS",
+            "userPoolConfig": {
+              "userPoolId": "authtodo0a4a0517"
+            }
+          },
+          "additionalAuthenticationProviders": []
+        },
+        "GraphQLAPIIdOutput": "dpcuu3po3bb6rahjyg6p2xw6r4",
+        "GraphQLAPIEndpointOutput": "https://snbfnvrsobcizems7qaznjf5ee.appsync-api.us-east-2.amazonaws.com/graphql"
+      },
+      "providerMetadata": {
+        "s3TemplateURL": "https://s3.amazonaws.com/amplify-todo-dev-9df20-deployment/amplify-cfn-templates/api/cloudformation-template.json",
+        "logicalId": "apitodo"
+      },
+      "lastPushTimeStamp": "2024-04-15T16:38:47.743Z",
+      "lastPushDirHash": "2/3sirxIhPNO2KTG6qFUji/bntc="
+    }
+  }
+}

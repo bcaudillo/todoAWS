@@ -1,0 +1,13 @@
+{
+    "AppSyncApiName": "todo",
+    "DynamoDBBillingMode": "PAY_PER_REQUEST",
+    "DynamoDBEnableServerSideEncryption": false,
+    "AuthCognitoUserPoolId": {
+        "Fn::GetAtt": [
+            "authtodo0a4a0517",
+            "Outputs.UserPoolId"
+        ]
+    },
+    "S3DeploymentBucket": "amplify-todo-dev-9df20-deployment",
+    "S3DeploymentRootKey": "amplify-appsync-files/ed3f3bee2ca6d32cbfe759b987405dcb60ba2381"
+}
